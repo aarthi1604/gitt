@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #id {
+        color: blue;
+      }
+      .city {
+        background-color: tomato;
+        color: white;
+        border: 2px solid black;
+        margin: 20px;
+        padding: 20px;
+      }
+      @import url(http://fonts.googleapis.com/css?family=Raleway);
+
+      :root {
+        --error-color: #dc3545;
+        --success-color: #28a745;
+        --warning-color: #ffc107;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        font-size: 16px;
+        background-color: rgba(99, 87, 212, 0.3);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        background-color: #fff;
+        padding: 1em;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        width: 400px;
+      }
+
+      .form {
+        padding: 10px 20px;
+      }
+
+      .form h1 {
+        font-size: 1.5em;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .form-field {
+        margin-bottom: 5px;
+      }
+
+      .form-field label {
+        display: block;
+        color: #777;
+        margin-bottom: 5px;
+      }
+
+      .form-field input {
+        border: solid 2px #f0f0f0;
+        border-radius: 3px;
+        padding: 10px;
+        margin-bottom: 5px;
+        font-size: 14px;
+        display: block;
+        width: 100%;
+      }
+
+      .form-field input:focus {
+        outline: none;
+      }
+
+      .form-field.error input {
+        border-color: var(--error-color);
+      }
+
+      .form-field.success input {
+        border-color: var(--success-color);
+      }
+
+      .form-field small {
+        color: var(--error-color);
+      }
+
+      /* button */
+      .btn {
+        width: 100%;
+        padding: 3%;
+        background: #007bff;
+        border-bottom: 2px solid #007bff;
+        border-top-style: none;
+        border-right-style: none;
+        border-left-style: none;
+        color: #fff;
+        text-transform: uppercase;
+      }
+
+      .btn:hover {
+        background: #0069d9;
+        cursor: pointer;
+      }
+
+      .btn:focus {
+        outline: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <centre>
+      <h1>
+        <b> <u> ACE COLLEGE REGISTRATION FORM </u></b>
+      </h1>
+    </centre>
+    <h2>
+      <br />
+      All the students are requested to fill this form completely.
+    </h2>
+
+    <div class="container">
+      <form id="signup" class="form">
+        <div class="form-field">
+          <label for="Studentname">Student name:</label>
+          <input
+            type="text"
+            name="Studentname"
+            id="Studentname"
+            autocomplete="off"
+          />
+          <small></small>
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email:</label>
+          <input type="text" name="email" id="email" autocomplete="off" />
+          <small></small>
+        </div>
+
+        <div class="form-field">
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            autocomplete="off"
+          />
+          <small></small>
+        </div>
+
+        <div class="form-field">
+          <label for="confirm-password">Confirm Password:</label>
+          <input
+            type="password"
+            name="confirm-password"
+            id="confirm-password"
+            autocomplete="off"
+          />
+          <small></small>
+        </div>
+
+        <div class="form-field">
+          <label for="DOB">Date of Birth:</label>
+          <input type="text" name="DOB" id="DOB" autocomplete="off" />
+          <small></small>
+        </div>
+
+        <div class="form-field">
+          <label for="year">Year:</label>
+          <input type="number" name="year" id="year" autocomplete="off" />
+          <small></small>
+        </div>
+
+        <div class="form-field">
+          <label for="address">Address:</label>
+          <input type="text" name="address" id="address" autocomplete="off" />
+          <small></small>
+        </div>
+
+        <div class="form-field">
+          <input type="submit" value="Sign Up" />
+        </div>
+      </form>
+    </div>
+  </body>
+
+  <script>
+    const usernameEl = document.querySelector("#Studentname");
+    const emailEl = document.querySelector("#email");
+    const passwordEl = document.querySelector("#password");
+    const confirmPasswordEl = document.querySelector("#confirm-password");
+    const DOBEl = document.querySelector("#DOB");
+    const yearEl = document.querySelector("#year");
+    const addressEl = document.querySelector("#address");
+
+    const form = document.querySelector("#signup");
+
+    const checkUsername = () => {
+      let valid = false;
+
+      const min = 3,
+        max = 25;
+
+      const Studentname = StudentnameEl.value.trim();
+
+      if (!isRequired(Studentname)) {
+        showError(StudentnameEl, "Username cannot be blank.");
+      } else if (!isBetween(Studentname.length, min, max)) {
+        showError(
+          StudentnameEl,
+          `Student name must be between ${min} and ${max} characters.`
+        );
+      } else {
+        showSuccess(StudentnameEl);
+        valid = true;
+      }
+      return valid;
+    };
+
+    const checkEmail = () => {
+      let valid = false;
+      const email = emailEl.value.trim();
+      if (!isRequired(email)) {
+        showError(emailEl, "Email cannot be blank.");
+        console.log("jhdsfkvjdknc");
+      } else if (!isEmailValid(email)) {
+        showError(emailEl, "Email is not valid.");
+        console.log("jhdsfkvjdknc");
+      } else {
+        showSuccess(emailEl);
+        valid = true;
+      }
+      return valid;
+    };
+
+    const checkPassword = () => {
+      let valid = false;
+
+      const password = passwordEl.value.trim();
+
+      if (!isRequired(password)) {
+        showError(passwordEl, "Password cannot be blank.");
+      } else if (!isPasswordSecure(password)) {
+        showError(
+          passwordEl,
+          "Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase characters, 1 number, and 1 special character in (!@#$%^&*)"
+        );
+      } else {
+        showSuccess(passwordEl);
+        valid = true;
+      }
+
+      return valid;
+    };
+
+    const checkConfirmPassword = () => {
+      let valid = false;
+      // check confirm password
+      const confirmPassword = confirmPasswordEl.value.trim();
+      const password = passwordEl.value.trim();
+
+      if (!isRequired(confirmPassword)) {
+        showError(confirmPasswordEl, "Please enter the password again");
+      } else if (password !== confirmPassword) {
+        showError(confirmPasswordEl, "The password does not match");
+      } else {
+        showSuccess(confirmPasswordEl);
+        valid = true;
+      }
+
+      return valid;
+    };
+
+    const checkDOB = () => {
+      let valid = false;
+
+      const min = 8,
+        max = 10;
+
+      const DOB = DOBEl.value.trim();
+
+      if (!isRequired(DOB)) {
+        showError(DOBEl, " Date of Birth cannot be blank.");
+      } else if (!isBetween(DOB.length, min, max)) {
+        showError(DOBEl, `DOB must be between ${min} and ${max} characters.`);
+      } else {
+        showSuccess(DOBEl);
+        valid = true;
+      }
+      return valid;
+    };
+
+    const checkYear = () => {
+      let valid = false;
+
+      const len = 4;
+      const year = yearEl.value.trim();
+
+      if (!isRequired(year)) {
+        showError(yearEl, " Year cannot be blank.");
+      } else if (year.length !== 4) {
+        showError(yearEl, `Please specify proper year`);
+      } else {
+        showSuccess(yearEl);
+        valid = true;
+      }
+      return valid;
+    };
+
+    const checkAddress = () => {
+      let valid = false;
+
+      const address = addressEl.value.trim();
+
+      if (!isRequired(address)) {
+        showError(addressEl, "Address cannot be blank.");
+      } else {
+        showSuccess(addressEl);
+        valid = true;
+      }
+      return valid;
+    };
+
+    const isEmailValid = (email) => {
+      const re =
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    };
+
+    const isPasswordSecure = (password) => {
+      const re = new RegExp(
+        "^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,}$"
+      );
+      return re.test(password);
+    };
+
+    const isRequired = (value) => (value === "" ? false : true);
+    const isBetween = (length, min, max) =>
+      length < min || length > max ? false : true;
+
+    const showError = (input, message) => {
+      // get the form-field element
+      const formField = input.parentElement;
+      // add the error class
+      formField.classList.remove("success");
+      formField.classList.add("error");
+
+      // show the error message
+      const error = formField.querySelector("small");
+      error.textContent = message;
+    };
+
+    const showSuccess = (input) => {
+      // get the form-field element
+      const formField = input.parentElement;
+
+      // remove the error class
+      formField.classList.remove("error");
+      formField.classList.add("success");
+
+      // hide the error message
+      const error = formField.querySelector("small");
+      error.textContent = "";
+    };
+
+    form.addEventListener("submit", function (e) {
+      // prevent the form from submitting
+      e.preventDefault();
+
+      // validate forms
+      let isUsernameValid = checkUsername(),
+        isEmailValid = checkEmail(),
+        isPasswordValid = checkPassword(),
+        isConfirmPasswordValid = checkConfirmPassword(),
+        isDOBValid = checkDOB(),
+        isYearValid = checkYear(),
+        isAddressValid = checkAddress();
+
+      let isFormValid =
+        isUsernameValid &&
+        isEmailValid &&
+        isPasswordValid &&
+        isConfirmPasswordValid &&
+        isDOBValid &&
+        isYearValid &&
+        isAddressValid;
+
+      // submit to the server if the form is valid
+      if (isFormValid) {
+      }
+    });
+
+    const debounce = (fn, delay = 500) => {
+      let timeoutId;
+      return (...args) => {
+        // cancel the previous timer
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+        // setup a new timer
+        timeoutId = setTimeout(() => {
+          fn.apply(null, args);
+        }, delay);
+      };
+    };
+    //
+    form.addEventListener(
+      "input",
+      debounce(function (e) {
+        switch (e.target.id) {
+          case "username":
+            checkUsername();
+            break;
+          case "email":
+            checkEmail();
+            break;
+          case "password":
+            checkPassword();
+            break;
+          case "confirm-password":
+            checkConfirmPassword();
+            break;
+          case "DOB":
+            checkDOB();
+            break;
+          case "year":
+            checkYear();
+            break;
+          case "address":
+            checkAddress();
+            break;
+        }
+      })
+    );
+  </script>
+</html>

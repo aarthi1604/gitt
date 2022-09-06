@@ -1,0 +1,41 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: #dee2d6;
+}
+
+
+
+.navbar {
+    background:#2b3883;
+}
+.nav-link,
+.navbar-brand {
+    color: #fff;
+    cursor: pointer;
+}
+.nav-link {
+    margin-right: 1em !important;
+}
+.nav-link:hover {
+    color: rgb(27, 23, 23);
+}
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+
+    h1 {color: rgb(255, 255, 255);}
+    h1 {font-family: Verdana, Geneva, Tahoma, sans-serif;}
+    h1 {font-size: 300%;}
+
+    
+    h2 {color: rgb(255, 255, 255);}
+    h2 {font-family: Verdana, Geneva, Tahoma, sans-serif;}
+    h2 {font-size: 300%;}
+
+    p {color: black;}
+    p {font-family: sans-serif;}
+    p {font-size: 150%}
+
+   
